@@ -13,7 +13,7 @@ Year: 2019 <br>
 
 EfficientNet is built using a series of building blocks called `MBConvBlocks`.
 
-The name `MBConvBlocks` comes from **MobileNet**.
+The name `MBConvBlocks` comes from [**MobileNet**](./mobilenet.md).
 
 `MBConvBlocks` consists of `DepthwiseConvBlock`, `PointwiseConvBlock`, and `SEBlock`.
 
