@@ -3,7 +3,7 @@
 # - jekyll-remote-theme # add this line to the plugins list if you already have one
 
 title: Machine Learning Dictionary
-description: None
+description: This repo contains classic NN architectures.
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-hacker
