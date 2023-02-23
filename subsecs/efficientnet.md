@@ -2,6 +2,8 @@
 layout: default
 ---
 
+[back](../index.md)
+
 ## EfficientNet
 
 [EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks](http://proceedings.mlr.press/v97/tan19a.html)<br>
@@ -34,5 +36,7 @@ The name `MBConvBlocks` comes from [**MobileNet**](./mobilenet.md).
 #### SEBlock
 
 `SEBlock`: Squeeze-and-Excitation (SE) Block. The SE block is used to model the interdependencies between channels. It contains a global average pooling layer followed by two fully connected layers and a sigmoid activation function. The output of the sigmoid function is used to re-weight the input feature map before passing it to the next layer. These weights are used to scale the channels of the input tensor to emphasize the most important channels.
+
+[back](../index.md)
 
 
