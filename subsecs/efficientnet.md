@@ -8,3 +8,5 @@ layout: default
 Aurthors: Mingxing Tan, Quoc Le <br>
 Year: 2019 <br>
 
+### Architecture
+![efficientnet](../pics/The-architecture-of-EfficientNet-Block.png)
