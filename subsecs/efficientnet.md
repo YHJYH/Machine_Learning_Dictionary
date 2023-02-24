@@ -10,6 +10,15 @@ layout: default
 Aurthors: Mingxing Tan, Quoc Le <br>
 Year: 2019 <br>
 
+### Main Contribution
+
+**Compound scaling**: 
+
+> use a compound coefficient φ to uniformly scales network width, depth, and resolution in a principled way.<br>
+![compoundscaling](../pics/compoundscaling.JPG)<br>
+
+> α, β, γ are constants that can be determined by a small grid search. Intuitively, φ is a user-specified coefficient that controls how many more resources are available for model scaling, while α, β, γ specify how to assign these extra resources to network width, depth, and resolution respectively. 
+
 ### Architecture
 ![efficientnet](../pics/The-architecture-of-EfficientNet-Block.png)<br>
 
