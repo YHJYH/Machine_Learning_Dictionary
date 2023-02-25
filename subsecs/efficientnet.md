@@ -35,6 +35,31 @@ The name `MBConvBlocks` comes from [**MobileNet**](./mobilenet.md).
 *   `DepthwiseConvBlock` has the same number of input and output channels.
 *   `DepthwiseConvBlock` has kernel size 3x3.
 
+```python
+class DepthwiseConvblock(nn.Module):
+    def __init__(self, in_channels, kernel_size, stride=1):
+        super(DepthwiseConvblock, self).__init__()
+
+        self.depthwise = nn.Conv2d(
+            in_channels=in_channels, 
+            out_channels=in_channels, 
+            kernel_size=kernel_size, 
+            stride=stride, 
+            padding='same', 
+            groups=in_channels, 
+            bias=False
+        )
+
+        self.bn = nn.BatchNorm2d(in_channels)
+        self.silu = nn.SiLU()
+
+    def forward(self, x):
+        out = self.depthwise(x)
+        out = self.bn(out)
+        out = self.silu(out)
+        return out
+```
+
 #### PointwiseConvBlock
 
 `PointwiseConvBlock`: A pointwise convolution is applied to the output of the depthwise convolution. This is a 1x1 convolution that applies a filter to each location in the output tensor. It is used to increase or decrease the number of channels in the output tensor. This is a convolutional operation that uses a 1x1 filter to combine the output channels of the depthwise convolution block. The pointwise convolution helps to increase the expressiveness of the network by allowing it to learn more complex representations of the input data. The pointwise convolution operation applies a C_out filters of size 1x1 to the input feature map, which essentially performs a linear combination of the output channels of the previous convolutional layer.
