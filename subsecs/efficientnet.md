@@ -67,9 +67,54 @@ class DepthwiseConvblock(nn.Module):
 *   `PointwiseConvBlock` has different number of input and output channels.
 *   `PointwiseConvBlock` has kernel size 1x1.
 
+```py
+class PointwiseConvBlock(nn.Module):
+    def __init__(self, in_channels, out_channels):
+        super(PointwiseConvBlock, self).__init__()
+
+        self.pointwise = nn.Conv2d(
+            in_channels=in_channels,
+            out_channels=out_channels,
+            kernel_size=1,
+            stride=1,
+            padding='valid',
+            bias=False
+        )
+        self.bn = nn.BatchNorm2d(out_channels)
+        self.relu = nn.ReLU(inplace=True)
+
+    def forward(self, x):
+        out = self.pointwise(x)
+        out = self.bn(out)
+        out = self.relu(out)
+        return out
+```
+
 #### SEBlock
 
 `SEBlock`: Squeeze-and-Excitation (SE) Block. The SE block is used to model the interdependencies between channels. It contains a global average pooling layer followed by two fully connected layers and a sigmoid activation function. The output of the sigmoid function is used to re-weight the input feature map before passing it to the next layer. These weights are used to scale the channels of the input tensor to emphasize the most important channels.
+
+```py
+class SEBlock(nn.Module):
+    def __init__(self, in_channels, reduced_channels):
+        super(SEBlock, self).__init__()
+
+        self.pool = nn.AdaptiveAvgPool2d(1)
+        self.fc1 = nn.Linear(in_channels, reduced_channels)
+        self.relu = nn.ReLU(inplace=True)
+        self.fc2 = nn.Linear(reduced_channels, in_channels)
+        self.sigmoid = nn.Sigmoid()
+
+    def forward(self, x):
+        batch_size, channels, _, _ = x.size()
+        out = self.pool(x).view(batch_size, channels)
+        out = self.fc1(out)
+        out = self.relu(out)
+        out = self.fc2(out)
+        out = self.sigmoid(out).view(batch_size, channels, 1, 1)
+        out = x * out
+        return out
+```
 
 [back](../index.md)
 
