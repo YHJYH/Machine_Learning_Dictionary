@@ -12,7 +12,7 @@ class DepthwiseConvblock(nn.Module):
             out_channels=in_channels, 
             kernel_size=kernel_size, 
             stride=stride, 
-            padding='same', 
+            padding='valid', 
             groups=in_channels, 
             bias=False
         )
@@ -134,10 +134,10 @@ class EfficientNetB0(nn.Module):
 
         # Blocks
         self.blocks = nn.Sequential(
-            MBConvBlock(32, 16, 3, 1, 1, None),
+            MBConvBlock(32, 16, 3, 1, 1, 4),
 
             MBConvBlock(16, 24, 3, 2, 6, 4),
-            MBConvBlock(24, 24, 3, 1, 6, 1),
+            MBConvBlock(24, 24, 3, 1, 6, 4),
             
             MBConvBlock(24, 40, 5, 2, 6, 4),
             MBConvBlock(40, 40, 5, 1, 6, 4),
