@@ -11,7 +11,7 @@ class DepthwiseConvblock(nn.Module):
             in_channels=in_channels, 
             out_channels=in_channels, 
             kernel_size=kernel_size, 
-            stride=stride, 
+            #stride=stride, 
             padding='valid', 
             groups=in_channels, 
             bias=False
@@ -120,7 +120,7 @@ class MBConvBlock(nn.Module):
         out = self.se(out)
         out = self.pointwise_conv(out)
 
-        if self.use_residual:
+        if self.use_residual and out.size() == x.size():
             out += x
         
         return out
@@ -130,39 +130,47 @@ class EfficientNetB0(nn.Module):
         super(EfficientNetB0, self).__init__()
 
         # stem phase
-        self.stem_conv = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, stride=2, padding=1, bias=False)
+        self.stem_conv = nn.Sequential(
+            nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, stride=2, padding=1, bias=False),
+            nn.BatchNorm2d(32),
+            nn.ReLU(inplace=True)
+        )
 
         # Blocks
         self.blocks = nn.Sequential(
-            MBConvBlock(32, 16, 3, 1, 1, 4),
+            MBConvBlock(32, 16, 3, 1, 1, 1),
 
-            MBConvBlock(16, 24, 3, 2, 6, 4),
-            MBConvBlock(24, 24, 3, 1, 6, 4),
+            MBConvBlock(16, 24, 3, 2, 6, 1),
+            MBConvBlock(24, 24, 3, 1, 6, 1),
             
-            MBConvBlock(24, 40, 5, 2, 6, 4),
-            MBConvBlock(40, 40, 5, 1, 6, 4),
+            MBConvBlock(24, 40, 5, 2, 6, 1),
+            MBConvBlock(40, 40, 5, 1, 6, 1),
 
-            MBConvBlock(40, 80, 3, 2, 6, 4),
-            MBConvBlock(80, 80, 3, 1, 6, 4),
-            MBConvBlock(80, 80, 3, 1, 6, 4),
+            MBConvBlock(40, 80, 3, 2, 6, 1),
+            MBConvBlock(80, 80, 3, 1, 6, 1),
+            MBConvBlock(80, 80, 3, 1, 6, 1),
 
-            MBConvBlock(80, 112, 5, 1, 6, 4),
-            MBConvBlock(112, 112, 5, 1, 6, 4),
-            MBConvBlock(112, 112, 5, 1, 6, 4),
+            MBConvBlock(80, 112, 5, 1, 6, 1),
+            MBConvBlock(112, 112, 5, 1, 6, 1),
+            MBConvBlock(112, 112, 5, 1, 6, 1),
 
-            MBConvBlock(112, 192, 5, 2, 6, 4),
-            MBConvBlock(192, 192, 5, 1, 6, 4),
-            MBConvBlock(192, 192, 5, 1, 6, 4),
-            MBConvBlock(192, 192, 5, 1, 6, 4),
+            MBConvBlock(112, 192, 5, 2, 6, 1),
+            MBConvBlock(192, 192, 5, 1, 6, 1),
+            MBConvBlock(192, 192, 5, 1, 6, 1),
+            MBConvBlock(192, 192, 5, 1, 6, 1),
 
-            MBConvBlock(192, 320, 3, 1, 6, 4)
+            MBConvBlock(192, 320, 3, 1, 6, 1)
         )
 
         # head phase
-        self.head_conv = nn.Conv2d(320, 1280, kernel_size=1, stride=1, padding='valid', bias=False)
+        self.head_conv = nn.Sequential(
+            nn.Conv2d(320, 1280, kernel_size=1, stride=1, padding='valid', bias=False),
+            nn.BatchNorm2d(1280),
+            nn.ReLU(inplace=True)
+        )
 
         # pooling phase
-        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+        self.avg_pool = nn.AdaptiveAvgPool2d((1, 1))
 
         # classifer
         self.classifier = nn.Linear(1280, num_classes)
