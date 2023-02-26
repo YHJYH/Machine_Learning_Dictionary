@@ -1,3 +1,4 @@
+import numpy as np
 import torch.utils.data
 import torchvision.transforms as transforms
 from torchvision.datasets import Caltech256
@@ -13,6 +14,7 @@ class Caltech256Dataset(torch.utils.data.Dataset):
         img, target = self.dataset[index]
         if self.transform is not None:
             img = self.transform(img)
+        img = np.array(img)
         return img, target
 
     def __len__(self):
