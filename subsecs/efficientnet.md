@@ -10,6 +10,8 @@ layout: default
 Aurthors: Mingxing Tan, Quoc Le <br>
 Year: 2019 <br>
 
+[Model size comparison](./efficientnet_model.md)
+
 ### Main Contribution
 
 **Compound scaling**: 
@@ -44,8 +46,8 @@ class DepthwiseConvblock(nn.Module):
             in_channels=in_channels, 
             out_channels=in_channels, 
             kernel_size=kernel_size, 
-            stride=stride, 
-            padding='same', 
+            #stride=stride, 
+            padding='valid', 
             groups=in_channels, 
             bias=False
         )
