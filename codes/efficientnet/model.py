@@ -182,4 +182,67 @@ class EfficientNetB0(nn.Module):
         x = self.avg_pool(x)
         x = torch.flatten(x, 1)
         x = self.classifier(x)
+        x = F.log_softmax(x, dim=1)
         return x
+    
+
+class EfficientNetCustomize(nn.Module):
+    def __init__(self, num_classes):
+        super(EfficientNetCustomize, self).__init__()
+
+        # stem phase
+        self.stem_conv = nn.Sequential(
+            nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, stride=1, padding=1, bias=False),
+            nn.BatchNorm2d(32),
+            nn.ReLU(inplace=True)
+        )
+
+        # Blocks
+        self.blocks = nn.Sequential(
+            MBConvBlock(32, 16, 3, 1, 1, 1),
+
+            MBConvBlock(16, 24, 3, 1, 6, 1),
+            # MBConvBlock(24, 24, 3, 1, 6, 1),
+            
+            MBConvBlock(24, 40, 5, 1, 6, 1),
+            # MBConvBlock(40, 40, 5, 1, 6, 1),
+
+            MBConvBlock(40, 80, 3, 1, 6, 1),
+            # MBConvBlock(80, 80, 3, 1, 6, 1),
+            # MBConvBlock(80, 80, 3, 1, 6, 1),
+
+            MBConvBlock(80, 112, 5, 1, 6, 1),
+            # MBConvBlock(112, 112, 5, 1, 6, 1),
+            # MBConvBlock(112, 112, 5, 1, 6, 1),
+
+            MBConvBlock(112, 192, 5, 1, 6, 1),
+            # MBConvBlock(192, 192, 5, 1, 6, 1),
+            # MBConvBlock(192, 192, 5, 1, 6, 1),
+            # MBConvBlock(192, 192, 5, 1, 6, 1),
+
+            MBConvBlock(192, 320, 3, 1, 6, 1)
+        )
+
+        # head phase
+        self.head_conv = nn.Sequential(
+            nn.Conv2d(320, 1280, kernel_size=1, stride=1, padding='valid', bias=False),
+            nn.BatchNorm2d(1280),
+            nn.ReLU(inplace=True)
+        )
+
+        # pooling phase
+        self.avg_pool = nn.AdaptiveAvgPool2d((1, 1))
+
+        # classifer
+        self.classifier = nn.Linear(1280, num_classes)
+    
+    def forward(self, x):
+        x = self.stem_conv(x)
+        x = self.blocks(x)
+        x = self.head_conv(x)
+        x = self.avg_pool(x)
+        x = torch.flatten(x, 1)
+        x = self.classifier(x)
+        x = F.log_softmax(x, dim=1)
+        return x
+    
