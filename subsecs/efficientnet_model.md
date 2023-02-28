@@ -4,6 +4,7 @@ layout: default
 
 Model: `EfficientNetB0` <br>
 Data input: `{num_class: 1000, img_size: (3, 224, 224)}` <br>
+Example dataset: [Caltech256](./caltech256.md) <br>
 ```py
 ===============================================================================================
 Total params: 7,171,288
@@ -20,6 +21,7 @@ Estimated Total Size (MB): 2008.71
 
 Model: `EfficientNetCustomize` <br>
 Data input: `{num_class: 10, img_size: (3, 32, 32)}` <br>
+Example dataset: [CIFAR10](./cifar10.md) <br>
 ```py
 ===============================================================================================
 Total params: 2,117,626
