@@ -2,6 +2,8 @@
 layout: default
 ---
 
+[back](../index.md)
+
 Model: `EfficientNetB0` <br>
 Data input: `{num_class: 1000, img_size: (3, 224, 224)}` <br>
 Example dataset: [Caltech256](./caltech256.md) <br>
@@ -35,3 +37,5 @@ Params size (MB): 8.08
 Estimated Total Size (MB): 41.71
 ===============================================================================================
 ```
+
+[back](../index.md)

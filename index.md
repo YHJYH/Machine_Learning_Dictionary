@@ -10,3 +10,4 @@ layout: default
 # Datasets
 
 *   [Caltech256](./subsecs/caltech256.md)
+*   [CIFAR10](./subsecs/cifar10.md)
