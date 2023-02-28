@@ -114,10 +114,10 @@ def train(args):
                 last_loss = running_loss / 100. # loss per batch
                 print('Epoch: %d, Batch: %d. (%.0f %%)' % (epoch+1, batch_index, 100.*batch_index/len(train_loader)))
                 print('Train loss: %.6f' % last_loss)
-                torch.save({
-                    'MODEL': Model.state_dict(),
-                    'optimizer': optimizer.state_dict()
-                    }, model_file)
+                # torch.save({
+                #    'MODEL': Model.state_dict(),
+                #    'optimizer': optimizer.state_dict()
+                #    }, model_file)
                 running_loss = 0.
                                
         print('-'*20)
@@ -148,8 +148,8 @@ def train(args):
                 # print('Early stopping at: %d' % (cur_epoch+1))    
                 break
         
-        print('Early stopping at: %d' % (cur_epoch+1)) 
-        print(f'Current training loss: {last_loss}, current val loss: {best_vloss}')
+    print('Early stopping at: %d' % (cur_epoch+1)) 
+    print(f'Current training loss: {last_loss}, current val loss: {best_vloss}')
                 
     print('-'*20)
         
