@@ -127,7 +127,7 @@ def train(args):
             
             img, label = img.to(device), label.to(device)
             
-            pred = Model(img)[1]
+            pred = Model(img)
             running_vloss += criterion(pred, label).item()
         
         avg_vloss = running_vloss / (batch_index+1)
