@@ -10,7 +10,8 @@ layout: default
 Aurthors: Mingxing Tan, Quoc Le <br>
 Year: 2019 <br>
 
-[Model size comparison](./efficientnet_model.md)
+[Model size comparison](./efficientnet_model.md) <br>
+[Model performance](./)
 
 ### Main Contribution
 
