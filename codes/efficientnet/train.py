@@ -5,9 +5,11 @@ import torch.nn as nn
 from torchvision.transforms import transforms
 from torchvision.datasets import CIFAR10
 from torch.utils.data import random_split, Dataset, DataLoader, SubsetRandomSampler
+import torch.nn.functional as F
 
 from dataset import Caltech256Dataset
 from model import EfficientNetB0, EfficientNetCustomize
+from other.utils import draw_loss_graph
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 data_path_dir= os.getcwd()
@@ -85,7 +87,10 @@ def train(args):
     
     train_loader, test_loader = data['train_loader'], data['test_loader']
     
-    criterion = nn.CrossEntropyLoss()
+    if args.loss_type == 'CrossEntropyLoss':
+        criterion = nn.CrossEntropyLoss()
+    elif args.loss_type == 'NLLLoss':
+        criterion = F.NLL_Loss()
     
     optimizer = torch.optim.SGD(Model.parameters(), lr=args.lr, momentum=args.momentum)
     
@@ -156,6 +161,8 @@ def train(args):
     print(f'Best training loss: {last_loss}, best val loss: {best_vloss}')
                 
     print('-'*20)
+
+    draw_loss_graph(train_loss=train_loss, test_loss=test_loss, loss_type=args.loss_type, model_dataset=args.model + args.dataset)
         
     
 if __name__ == '__main__':
@@ -165,6 +172,7 @@ if __name__ == '__main__':
     parser.add_argument('-dataset', default='cifar10', type=str) # options: cifar10, caltech256
     parser.add_argument('-model', default='customize', type=str) # options: customize, b0
     
+    parser.add_argument('-loss_type', default='CrossEntropyLoss', type=str) # options: CrossEntropyLoss, NLLLoss
     parser.add_argument('-lr', default=0.001, type=float)
     parser.add_argument('-momentum', default=0.9, type=float)
     parser.add_argument('-patience', default=3, type=int)
