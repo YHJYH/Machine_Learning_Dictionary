@@ -92,6 +92,8 @@ def train(args):
     best_vloss = 100
     patience = args.patience
     trigger = 0
+    train_loss = []
+    test_loss = []
     print("Training begin...")
     for epoch in range(args.epoch_num):
         running_loss = 0.
@@ -132,6 +134,8 @@ def train(args):
         
         avg_vloss = running_vloss / (batch_index+1)
         print('Train loss: %.6f, Valid loss: %.6f' % (last_loss, avg_vloss))
+        train_loss.append(last_loss)
+        test_loss.append(avg_vloss)
         if avg_vloss <= best_vloss:
             trigger = 0
             print('Updating model file...')
@@ -149,7 +153,7 @@ def train(args):
                 break
         
     print('Early stopping at: %d' % (cur_epoch+1)) 
-    print(f'Current training loss: {last_loss}, current val loss: {best_vloss}')
+    print(f'Best training loss: {last_loss}, best val loss: {best_vloss}')
                 
     print('-'*20)
         
