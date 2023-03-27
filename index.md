@@ -4,7 +4,7 @@ layout: default
 
 # Computer vision
 
-* AlexNet
+* [AlexNet](./subsecs/alexnet.md)
 * VGG16
 * GoogLeNet
 * ResNet
