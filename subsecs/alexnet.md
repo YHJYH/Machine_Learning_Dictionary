@@ -10,6 +10,8 @@ layout: default
 Authors: Alex Krizhevsky, Ilya Sutskever, Geoffrey E. Hinton <br>
 Year: 2012 <br>
 
+[Model performance](./alexnet_md_perf.md)
+
 ### Main contribution
 **Rectified linear units (ReLU)**:
 f(x) = max(0, x) <br>
@@ -19,3 +21,20 @@ f(x) = max(0, x) <br>
 * faster computing
 
 ### Architecture
+```python
+Block1: Conv2d + ReLU + MaxPool
+Block2: Conv2d + ReLU
+Block3: Dropout + Linear + ReLU
+
+AlexNet:
+    FeatureExtractor:
+        Block1 * 2
+        Block2 * 2
+        Block1
+    AvgPool
+    Classifier:
+        Block3 * 2
+        Linear
+```
+
+[back](../index.md)
