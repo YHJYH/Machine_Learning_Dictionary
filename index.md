@@ -35,6 +35,17 @@ summarization, generation story about image, question answering, sentiment analy
 * eXtreme multi-label learning via graph networks (XLNet)
 * Efficiently learning an encoder that classifies token replacements accurately (ELECTRA)
 
+# Predictive modeling
+* Generalized linear models (GLMs)
+* Decision trees
+  * Random forest
+  * Gradient boosting
+    * XGBoost
+    * LightGBM
+    * CatBoost
+* Support vector machine (SVM)
+* k nearest neighbours (kNN)
+
 
 # Datasets
 
