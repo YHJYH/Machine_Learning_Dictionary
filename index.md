@@ -20,7 +20,7 @@ layout: default
 Machine translation, personal assistants (Siri), information extraction, 
 summarization, generation story about image, question answering, sentiment analysis.
 
-* Word2vec
+* [Word2vec](./subsecs/word2vec.md)
 
 
 * Recurrent neural network (RNN)
