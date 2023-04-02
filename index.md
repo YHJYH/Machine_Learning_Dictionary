@@ -48,7 +48,11 @@ summarization, generation story about image, question answering, sentiment analy
 
 
 # Datasets
+* [Caltech256](./subsecs/caltech256.md)
+* [CIFAR10](./subsecs/cifar10.md)
+* [CIFAR100](./subsecs/cifar100.md)
 
-*   [Caltech256](./subsecs/caltech256.md)
-*   [CIFAR10](./subsecs/cifar10.md)
-*   [CIFAR100](./subsecs/cifar100.md)
+# Neural networks
+* Loss functions
+* Optimizers
+* 
