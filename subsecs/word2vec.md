@@ -31,6 +31,12 @@ In paper 1:
 * the order of words doesn't matter in CBOW but matters in Feedforward NNLM.
 * CBOW uses a simple averaging operation over input word vectors instead of a non-linear hidden layer.
 * CBOW shares the projection layer (i.e., the weight matrix used to produce input word vectors) for all words in the vocabulary, which can greatly reduce the number of parameters.
+* CBOW does not need to output probabilistic distribution for a target word, it can output real-value, as a word embedding which is used in downstream tasks.
+  * each word has an embedding.
+  * called *pretraining embeddings*.
+
+CBOW loss function: <br>
+![cbowloss](../pics/cbow_lossfunc.JPG)
 
 **Continuous Skip-Gram model**
 * predict surrounding words based on the middle word.
