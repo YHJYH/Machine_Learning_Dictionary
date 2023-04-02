@@ -1,3 +1,4 @@
 
 *.tar
 *.jpg
+codes/alexnet/model/alexnet_model/train_model
