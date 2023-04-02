@@ -44,6 +44,11 @@ CBOW loss function: <br>
 
 ## Architecture
 ![cbow](../pics/cbow_and_sg.JPG) <br>
-[Exercise: Computing Word Embeddings: Continuous Bag-of-Words](https://pytorch.org/tutorials/beginner/nlp/word_embeddings_tutorial.html#exercise-computing-word-embeddings-continuous-bag-of-words)
+
+**CBOW** <br>
+[Exercise: Computing Word Embeddings: Continuous Bag-of-Words](https://pytorch.org/tutorials/beginner/nlp/word_embeddings_tutorial.html#exercise-computing-word-embeddings-continuous-bag-of-words) <br>
+Use ```nn.Embedding()``` for projection layer, and ```nn.Linear()``` for output layer; <br>
+The output from the model's embedding layer, which is the hidden representation of the input word(s), can be used for downstream tasks such as sentiment analysis or text classification.
+
 
 [back](../index.md)
