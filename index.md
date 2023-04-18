@@ -37,6 +37,8 @@ summarization, generation story about image, question answering, sentiment analy
 
 # Predictive modeling
 * Generalized linear models (GLMs)
+  * [Least squares method](./subsecs/LS.md)
+  * Bayesian method/maximum likelihood method
 * Decision trees
   * Random forest
   * Gradient boosting
