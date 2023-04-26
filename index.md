@@ -57,4 +57,6 @@ summarization, generation story about image, question answering, sentiment analy
 # Neural networks
 * Loss functions
 * Optimizers
-* 
+
+# Linear Algebra
+* [matrix: diagonalization & SVD](./subsecs/svd.md)
