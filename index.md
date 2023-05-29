@@ -30,8 +30,8 @@ summarization, generation story about image, question answering, sentiment analy
 
 * Self-attention
 * Transformer
-* Bidirectional encoder representations from transformers (BERT)
 * [Generative pre-trained transformers (GPT)](./subsecs/gpt.md)
+* [Bidirectional encoder representations from transformers (BERT)](./subsecs/bert.md)
 * eXtreme multi-label learning via graph networks (XLNet)
 * Efficiently learning an encoder that classifies token replacements accurately (ELECTRA)
 
