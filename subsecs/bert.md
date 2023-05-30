@@ -17,6 +17,8 @@ Summary:
 - next sentence prediction (NSP)
 - fine-tuning
 - WordPiece tokenization
-- 
+
+## Reference
+[BERT: Pre-Training of Transformers for Language Understanding](https://medium.com/swlh/bert-pre-training-of-transformers-for-language-understanding-5214fba4a9af)
 
 [back](../index.md)
