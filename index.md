@@ -24,12 +24,13 @@ summarization, generation story about image, question answering, sentiment analy
 
 
 * Recurrent neural network (RNN)
+* Variation autoencoders (VAE)
 * Long short-term memory (LSTM)
 * Gated recurrent unit (GRU)
 
 
-* Self-attention
-* Transformer
+Self-attention:
+* [Transformer](./subsecs/transformer.md)
 * [Generative pre-trained transformers (GPT)](./subsecs/gpt.md)
 * [Bidirectional encoder representations from transformers (BERT)](./subsecs/bert.md)
 * eXtreme multi-label learning via graph networks (XLNet)
