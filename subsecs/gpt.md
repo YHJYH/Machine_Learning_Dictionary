@@ -76,8 +76,8 @@ In order to prevent a significant amount of task-specific customization, GPT
 
 
 ## Reference
-[1.](https://medium.com/dataseries/openai-gpt-generative-pre-training-for-language-understanding-bbbdb42b7ff4) *OpenAI GPT: Generative Pre-Training for Language Understanding* <br>
-[2.](https://machinelearningmastery.com/a-gentle-introduction-to-positional-encoding-in-transformer-models-part-1/) *A Gentle Introduction to Positional Encoding in Transformer Models, Part 1* <br>
+[*OpenAI GPT: Generative Pre-Training for Language Understanding*](https://medium.com/dataseries/openai-gpt-generative-pre-training-for-language-understanding-bbbdb42b7ff4) <br>
+[*A Gentle Introduction to Positional Encoding in Transformer Models, Part 1*](https://machinelearningmastery.com/a-gentle-introduction-to-positional-encoding-in-transformer-models-part-1/) <br>
 
 
 [back](../index.md)
