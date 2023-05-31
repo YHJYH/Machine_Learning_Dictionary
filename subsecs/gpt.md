@@ -31,7 +31,7 @@ while GPT is a specific implementation of this architecture. <br>
   - > the model applies a multi-headed self-attention operation over the input context tokens followed by position-wise 
     feedforward layers to produce an output distribution over target tokens.
 
-> GPT's transformer decoder architecture: 
+> GPT's transformer decoder architecture: <br>
 > ![gpt](../pics/gpt.JPG) 
 
 ### Stage 1: unsupervised pre-training
@@ -61,7 +61,7 @@ Maximize objective function: <br>
 - y: label
 - x_i: i-th token
 
-where: 
+where: <br>
 ![gpt_ft_prob](../pics/gpt_ft_prob.JPG) <br>
 - h^{l}_{m}: the final transformer block's activation
 - W_y: parameters of the added linear output layer
